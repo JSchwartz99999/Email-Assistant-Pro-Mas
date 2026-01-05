@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Assistant - Strategic Sales</title>
+    <title>Outreach Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,438 +15,822 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f8f9fb;
             min-height: 100vh;
-            color: #fff;
+            color: #1a1a2e;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            text-align: center;
-            padding: 30px 0;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        header p {
-            color: #a0a0a0;
-            font-size: 1.1rem;
-        }
-
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        @media (max-width: 900px) {
-            .main-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .panel {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 25px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .panel h2 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            color: #00d4ff;
-        }
-
-        .form-group {
-            margin-bottom: 18px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: 500;
-            color: #ccc;
-            font-size: 0.9rem;
-        }
-
-        input, textarea, select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.08);
-            color: #fff;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            border-color: #00d4ff;
-            background: rgba(255, 255, 255, 0.12);
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        select option {
-            background: #1a1a2e;
-            color: #fff;
-        }
-
-        .email-type-selector {
+        .app-container {
             display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
+            min-height: 100vh;
         }
 
-        .email-type-btn {
-            flex: 1;
-            padding: 12px 15px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            background: transparent;
-            color: #ccc;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .email-type-btn:hover {
-            border-color: #00d4ff;
-            color: #00d4ff;
-        }
-
-        .email-type-btn.active {
-            background: linear-gradient(135deg, #00d4ff 0%, #7b2cbf 100%);
-            border-color: transparent;
-            color: #fff;
-        }
-
-        .generate-btn {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 8px;
-            background: linear-gradient(135deg, #00d4ff 0%, #7b2cbf 100%);
-            color: #fff;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-        }
-
-        .generate-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
-        }
-
-        .generate-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .output-panel {
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: #fff;
+            border-right: 1px solid #e5e7eb;
+            padding: 24px;
             display: flex;
             flex-direction: column;
         }
 
-        .email-output {
-            flex: 1;
-            min-height: 400px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 8px;
-            padding: 20px;
-            font-family: 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            white-space: pre-wrap;
-            overflow-y: auto;
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 32px;
         }
 
-        .email-output.placeholder {
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: #2563eb;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #666;
-            font-style: italic;
+            color: #fff;
+            font-weight: 700;
+            font-size: 18px;
         }
 
-        .output-actions {
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1a2e;
+        }
+
+        .nav-section {
+            margin-bottom: 24px;
+        }
+
+        .nav-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #9ca3af;
+            margin-bottom: 12px;
+        }
+
+        .email-type-nav {
             display: flex;
-            gap: 10px;
-            margin-top: 15px;
+            flex-direction: column;
+            gap: 4px;
         }
 
-        .action-btn {
-            flex: 1;
-            padding: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            background: transparent;
-            color: #ccc;
+        .nav-item {
+            padding: 10px 12px;
+            border-radius: 6px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
+            font-size: 14px;
+            font-weight: 500;
+            color: #4b5563;
+            transition: all 0.15s ease;
+            border: none;
+            background: transparent;
+            text-align: left;
+            width: 100%;
         }
 
-        .action-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
+        .nav-item:hover {
+            background: #f3f4f6;
+            color: #1a1a2e;
+        }
+
+        .nav-item.active {
+            background: #eff6ff;
+            color: #2563eb;
+        }
+
+        .api-section {
+            margin-top: auto;
+            padding-top: 24px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .api-section label {
+            font-size: 12px;
+            font-weight: 500;
+            color: #6b7280;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .api-input-wrap {
+            display: flex;
+            gap: 6px;
+        }
+
+        .api-input-wrap input {
+            flex: 1;
+            padding: 8px 10px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            font-size: 13px;
+            background: #f9fafb;
+        }
+
+        .api-input-wrap input:focus {
+            outline: none;
+            border-color: #2563eb;
+            background: #fff;
+        }
+
+        .api-toggle-btn {
+            padding: 8px 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            background: #fff;
+            cursor: pointer;
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .api-toggle-btn:hover {
+            background: #f3f4f6;
+        }
+
+        .api-status {
+            font-size: 11px;
+            margin-top: 6px;
+            color: #9ca3af;
+        }
+
+        .api-status.connected {
+            color: #10b981;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-header {
+            padding: 20px 32px;
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .content-header h1 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+
+        .content-header p {
+            font-size: 14px;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+
+        .content-body {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        @media (max-width: 1100px) {
+            .app-container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #e5e7eb;
+            }
+            .content-body {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Input Panel */
+        .input-panel {
+            padding: 28px 32px;
+            background: #fff;
+            border-right: 1px solid #e5e7eb;
+            overflow-y: auto;
+        }
+
+        /* Strength Meter */
+        .strength-meter {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 28px;
+        }
+
+        .strength-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .strength-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .strength-score {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .strength-score.weak { color: #ef4444; }
+        .strength-score.fair { color: #f59e0b; }
+        .strength-score.good { color: #10b981; }
+        .strength-score.strong { color: #059669; }
+
+        .strength-bar {
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .strength-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .strength-fill.weak { background: #ef4444; }
+        .strength-fill.fair { background: #f59e0b; }
+        .strength-fill.good { background: #10b981; }
+        .strength-fill.strong { background: #059669; }
+
+        .strength-checklist {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+        }
+
+        .strength-item {
+            font-size: 12px;
+            color: #9ca3af;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .strength-item.complete {
+            color: #10b981;
+        }
+
+        .check-icon {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 1.5px solid currentColor;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+        }
+
+        .strength-item.complete .check-icon {
+            background: #10b981;
+            border-color: #10b981;
             color: #fff;
         }
 
-        .action-btn:disabled {
-            opacity: 0.4;
+        /* Form Sections */
+        .form-section {
+            margin-bottom: 28px;
+        }
+
+        .section-title {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #9ca3af;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e5e7eb;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 6px;
+        }
+
+        .form-group label .optional {
+            color: #9ca3af;
+            font-weight: 400;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: all 0.15s ease;
+            background: #fff;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #9ca3af;
+        }
+
+        .char-count {
+            font-size: 11px;
+            color: #9ca3af;
+            text-align: right;
+            margin-top: 4px;
+        }
+
+        /* Tone Pills */
+        .tone-options {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tone-pill {
+            padding: 8px 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 20px;
+            background: #fff;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            color: #4b5563;
+            transition: all 0.15s ease;
+        }
+
+        .tone-pill:hover {
+            border-color: #2563eb;
+            color: #2563eb;
+        }
+
+        .tone-pill.active {
+            background: #2563eb;
+            border-color: #2563eb;
+            color: #fff;
+        }
+
+        /* Generate Button */
+        .generate-btn {
+            width: 100%;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .generate-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .generate-btn:disabled {
+            background: #93c5fd;
             cursor: not-allowed;
         }
 
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
+        .generate-btn .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255,255,255,0.3);
             border-top-color: #fff;
-            animation: spin 1s ease-in-out infinite;
-            margin-right: 10px;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
         }
 
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
 
-        .api-key-section {
-            background: rgba(255, 193, 7, 0.1);
-            border: 1px solid rgba(255, 193, 7, 0.3);
-            border-radius: 8px;
-            padding: 15px;
+        /* Output Panel */
+        .output-panel {
+            padding: 28px 32px;
+            background: #f9fafb;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .output-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 20px;
         }
 
-        .api-key-section label {
-            color: #ffc107;
+        .output-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #374151;
         }
 
-        .tips {
-            margin-top: 20px;
-            padding: 15px;
-            background: rgba(0, 212, 255, 0.1);
-            border-radius: 8px;
-            border-left: 3px solid #00d4ff;
-        }
-
-        .tips h3 {
-            font-size: 0.9rem;
-            margin-bottom: 8px;
-            color: #00d4ff;
-        }
-
-        .tips ul {
-            list-style: none;
-            font-size: 0.85rem;
-            color: #aaa;
-        }
-
-        .tips li {
-            margin-bottom: 5px;
-            padding-left: 15px;
-            position: relative;
-        }
-
-        .tips li::before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: #00d4ff;
-        }
-
-        .sequence-output {
-            margin-top: 15px;
-        }
-
-        .email-card {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-left: 3px solid #00d4ff;
-        }
-
-        .email-card h4 {
-            color: #00d4ff;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-
-        .email-card pre {
-            white-space: pre-wrap;
-            font-family: 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: #ddd;
-        }
-
-        .tone-selector {
+        .output-actions {
             display: flex;
             gap: 8px;
-            flex-wrap: wrap;
         }
 
-        .tone-chip {
-            padding: 6px 14px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            background: transparent;
-            color: #aaa;
+        .action-btn {
+            padding: 8px 14px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            background: #fff;
             cursor: pointer;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
+            font-size: 13px;
+            font-weight: 500;
+            color: #4b5563;
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .tone-chip:hover {
-            border-color: #7b2cbf;
-            color: #7b2cbf;
+        .action-btn:hover:not(:disabled) {
+            border-color: #2563eb;
+            color: #2563eb;
         }
 
-        .tone-chip.active {
-            background: #7b2cbf;
-            border-color: #7b2cbf;
+        .action-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .action-btn.primary {
+            background: #2563eb;
+            border-color: #2563eb;
             color: #fff;
+        }
+
+        .action-btn.primary:hover:not(:disabled) {
+            background: #1d4ed8;
+        }
+
+        .email-preview {
+            flex: 1;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .email-preview-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid #e5e7eb;
+            background: #fafafa;
+        }
+
+        .email-subject {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+
+        .email-meta {
+            font-size: 12px;
+            color: #9ca3af;
+            margin-top: 4px;
+        }
+
+        .email-body {
+            padding: 20px;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #374151;
+            white-space: pre-wrap;
+            min-height: 300px;
+        }
+
+        .email-body.placeholder {
+            color: #9ca3af;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* Sequence Cards */
+        .sequence-container {
+            margin-top: 24px;
+        }
+
+        .sequence-card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .sequence-card-header {
+            padding: 12px 16px;
+            background: #fafafa;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 13px;
+            font-weight: 600;
+            color: #374151;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sequence-badge {
+            background: #2563eb;
+            color: #fff;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        .sequence-card-body {
+            padding: 16px;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #4b5563;
+            white-space: pre-wrap;
+        }
+
+        /* Helper text */
+        .helper-text {
+            font-size: 12px;
+            color: #9ca3af;
+            margin-top: 4px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Email Assistant</h1>
-            <p>Generate personalized sales emails in seconds</p>
-        </header>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">O</div>
+                <span class="logo-text">Outreach Pro</span>
+            </div>
 
-        <div class="main-content">
-            <div class="panel input-panel">
-                <div class="api-key-section">
-                    <label for="apiKey">Anthropic API Key</label>
-                    <div style="display: flex; gap: 10px;">
-                        <input type="password" id="apiKey" placeholder="sk-ant-..." style="flex: 1;"
-                               oninput="saveApiKey(this.value)">
-                        <button type="button" onclick="toggleApiKeyVisibility()" id="toggleKeyBtn"
-                                style="padding: 12px 15px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: transparent; color: #ccc; cursor: pointer;">
-                            Show
-                        </button>
-                    </div>
-                    <small style="color: #888; display: block; margin-top: 5px;">
-                        Your key is stored locally and never sent anywhere except Anthropic.
-                    </small>
-                    <div id="keyStatus" style="margin-top: 8px; font-size: 0.85rem;"></div>
-                </div>
-
-                <h2>Prospect Information</h2>
-
-                <div class="email-type-selector">
-                    <button class="email-type-btn active" data-type="cold" onclick="setEmailType('cold')">
+            <div class="nav-section">
+                <div class="nav-label">Email Type</div>
+                <div class="email-type-nav">
+                    <button class="nav-item active" data-type="cold" onclick="setEmailType('cold')">
                         Cold Outreach
                     </button>
-                    <button class="email-type-btn" data-type="followup" onclick="setEmailType('followup')">
+                    <button class="nav-item" data-type="followup" onclick="setEmailType('followup')">
                         Follow-Up
                     </button>
-                    <button class="email-type-btn" data-type="reengage" onclick="setEmailType('reengage')">
-                        Re-Engage
+                    <button class="nav-item" data-type="reengage" onclick="setEmailType('reengage')">
+                        Re-engagement
+                    </button>
+                    <button class="nav-item" data-type="meeting" onclick="setEmailType('meeting')">
+                        Meeting Request
                     </button>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="prospectName">Contact Name</label>
-                    <input type="text" id="prospectName" placeholder="e.g., Sarah Johnson">
+            <div class="api-section">
+                <label>API Key</label>
+                <div class="api-input-wrap">
+                    <input type="password" id="apiKey" placeholder="sk-ant-api03-..." oninput="saveApiKey(this.value)">
+                    <button class="api-toggle-btn" onclick="toggleApiKeyVisibility()" id="toggleKeyBtn">Show</button>
                 </div>
+                <div class="api-status" id="keyStatus">Not connected</div>
+            </div>
+        </aside>
 
-                <div class="form-group">
-                    <label for="prospectTitle">Title</label>
-                    <input type="text" id="prospectTitle" placeholder="e.g., VP of Marketing">
-                </div>
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <h1 id="headerTitle">Cold Outreach</h1>
+                <p id="headerDesc">Reach out to new prospects with a personalized first touch</p>
+            </header>
 
-                <div class="form-group">
-                    <label for="companyName">Company</label>
-                    <input type="text" id="companyName" placeholder="e.g., Acme Corporation">
-                </div>
-
-                <div class="form-group">
-                    <label for="industry">Industry</label>
-                    <input type="text" id="industry" placeholder="e.g., Financial Services, Healthcare">
-                </div>
-
-                <div class="form-group">
-                    <label for="context">Additional Context (optional)</label>
-                    <textarea id="context" placeholder="Any relevant details: recent news, mutual connections, specific challenges they face, past interactions, meeting notes..."></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="yourOffering">What You're Offering</label>
-                    <textarea id="yourOffering" placeholder="Brief description of your product/service and its key value proposition"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label>Tone</label>
-                    <div class="tone-selector">
-                        <button class="tone-chip" data-tone="professional" onclick="setTone('professional')">Professional</button>
-                        <button class="tone-chip active" data-tone="conversational" onclick="setTone('conversational')">Conversational</button>
-                        <button class="tone-chip" data-tone="bold" onclick="setTone('bold')">Bold</button>
-                        <button class="tone-chip" data-tone="executive" onclick="setTone('executive')">Executive</button>
+            <div class="content-body">
+                <!-- Input Panel -->
+                <div class="input-panel">
+                    <!-- Strength Meter -->
+                    <div class="strength-meter">
+                        <div class="strength-header">
+                            <span class="strength-title">Email Strength</span>
+                            <span class="strength-score weak" id="strengthScore">0%</span>
+                        </div>
+                        <div class="strength-bar">
+                            <div class="strength-fill weak" id="strengthFill" style="width: 0%"></div>
+                        </div>
+                        <div class="strength-checklist" id="strengthChecklist">
+                            <div class="strength-item" data-field="name">
+                                <span class="check-icon">✓</span>
+                                Contact name
+                            </div>
+                            <div class="strength-item" data-field="company">
+                                <span class="check-icon">✓</span>
+                                Company
+                            </div>
+                            <div class="strength-item" data-field="title">
+                                <span class="check-icon">✓</span>
+                                Title/Role
+                            </div>
+                            <div class="strength-item" data-field="industry">
+                                <span class="check-icon">✓</span>
+                                Industry
+                            </div>
+                            <div class="strength-item" data-field="painPoint">
+                                <span class="check-icon">✓</span>
+                                Pain point
+                            </div>
+                            <div class="strength-item" data-field="offering">
+                                <span class="check-icon">✓</span>
+                                Your offering
+                            </div>
+                            <div class="strength-item" data-field="hook">
+                                <span class="check-icon">✓</span>
+                                Personal hook
+                            </div>
+                            <div class="strength-item" data-field="cta">
+                                <span class="check-icon">✓</span>
+                                Clear CTA
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- Contact Info -->
+                    <div class="form-section">
+                        <div class="section-title">Contact Information</div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Contact Name</label>
+                                <input type="text" id="prospectName" placeholder="Sarah Johnson" oninput="updateStrength()">
+                            </div>
+                            <div class="form-group">
+                                <label>Title / Role</label>
+                                <input type="text" id="prospectTitle" placeholder="VP of Marketing" oninput="updateStrength()">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Company</label>
+                                <input type="text" id="companyName" placeholder="Acme Corporation" oninput="updateStrength()">
+                            </div>
+                            <div class="form-group">
+                                <label>Industry</label>
+                                <input type="text" id="industry" placeholder="Financial Services" oninput="updateStrength()">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Company Size <span class="optional">(optional)</span></label>
+                            <select id="companySize">
+                                <option value="">Select size...</option>
+                                <option value="startup">Startup (1-50)</option>
+                                <option value="smb">SMB (51-200)</option>
+                                <option value="midmarket">Mid-Market (201-1000)</option>
+                                <option value="enterprise">Enterprise (1000+)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Context & Personalization -->
+                    <div class="form-section">
+                        <div class="section-title">Personalization</div>
+                        <div class="form-group">
+                            <label>Pain Point / Challenge</label>
+                            <textarea id="painPoint" placeholder="What problem are they likely facing? e.g., 'Struggling to scale outbound sales without adding headcount'" oninput="updateStrength()"></textarea>
+                            <div class="helper-text">Specific pain points lead to 3x higher response rates</div>
+                        </div>
+                        <div class="form-group">
+                            <label>Personal Hook <span class="optional">(optional but powerful)</span></label>
+                            <textarea id="hook" placeholder="Recent trigger: funding round, job change, company news, LinkedIn post, mutual connection, conference..." oninput="updateStrength()"></textarea>
+                            <div class="helper-text">A relevant hook can double your open rates</div>
+                        </div>
+                    </div>
+
+                    <!-- Your Offering -->
+                    <div class="form-section">
+                        <div class="section-title">Your Pitch</div>
+                        <div class="form-group">
+                            <label>What You're Offering</label>
+                            <textarea id="yourOffering" placeholder="Describe your product/service and its key value. Focus on outcomes, not features." oninput="updateStrength()"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Key Differentiator <span class="optional">(optional)</span></label>
+                            <input type="text" id="differentiator" placeholder="What makes you different? e.g., '50% faster implementation than competitors'">
+                        </div>
+                        <div class="form-group">
+                            <label>Social Proof <span class="optional">(optional)</span></label>
+                            <input type="text" id="socialProof" placeholder="e.g., 'Used by 500+ companies including Stripe and Notion'">
+                        </div>
+                        <div class="form-group">
+                            <label>Desired Call-to-Action</label>
+                            <select id="cta" oninput="updateStrength()">
+                                <option value="">Select CTA...</option>
+                                <option value="call">Schedule a quick call</option>
+                                <option value="demo">Book a demo</option>
+                                <option value="reply">Reply with thoughts</option>
+                                <option value="resource">Check out a resource</option>
+                                <option value="intro">Get an introduction</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Tone -->
+                    <div class="form-section">
+                        <div class="section-title">Tone</div>
+                        <div class="tone-options">
+                            <button class="tone-pill" data-tone="professional" onclick="setTone('professional')">Professional</button>
+                            <button class="tone-pill active" data-tone="conversational" onclick="setTone('conversational')">Conversational</button>
+                            <button class="tone-pill" data-tone="bold" onclick="setTone('bold')">Bold</button>
+                            <button class="tone-pill" data-tone="executive" onclick="setTone('executive')">Executive</button>
+                            <button class="tone-pill" data-tone="friendly" onclick="setTone('friendly')">Friendly</button>
+                        </div>
+                    </div>
+
+                    <button class="generate-btn" onclick="generateEmail()" id="generateBtn">
+                        Generate Email
+                    </button>
                 </div>
 
-                <button class="generate-btn" onclick="generateEmail()">
-                    Generate Email
-                </button>
+                <!-- Output Panel -->
+                <div class="output-panel">
+                    <div class="output-header">
+                        <span class="output-title">Preview</span>
+                        <div class="output-actions">
+                            <button class="action-btn" onclick="copyToClipboard()" id="copyBtn" disabled>
+                                Copy
+                            </button>
+                            <button class="action-btn" onclick="generateVariation()" id="variationBtn" disabled>
+                                Variation
+                            </button>
+                            <button class="action-btn primary" onclick="generateSequence()" id="sequenceBtn" disabled>
+                                3-Email Sequence
+                            </button>
+                        </div>
+                    </div>
 
-                <div class="tips">
-                    <h3>Tips for better results</h3>
-                    <ul>
-                        <li>More context = more personalized emails</li>
-                        <li>Mention specific challenges or pain points</li>
-                        <li>Include recent company news if you have it</li>
-                        <li>For follow-ups, describe what happened previously</li>
-                    </ul>
+                    <div class="email-preview">
+                        <div class="email-preview-header" id="emailHeader" style="display: none;">
+                            <div class="email-subject" id="emailSubject"></div>
+                            <div class="email-meta">To: <span id="emailTo"></span></div>
+                        </div>
+                        <div class="email-body placeholder" id="emailOutput">
+                            Fill in the prospect details and click Generate to create your personalized email
+                        </div>
+                    </div>
+
+                    <div class="sequence-container" id="sequenceOutput"></div>
                 </div>
             </div>
-
-            <div class="panel output-panel">
-                <h2>Generated Email</h2>
-                <div class="email-output placeholder" id="emailOutput">
-                    Your personalized email will appear here...
-                </div>
-                <div class="output-actions">
-                    <button class="action-btn" onclick="copyToClipboard()" id="copyBtn" disabled>
-                        📋 Copy to Clipboard
-                    </button>
-                    <button class="action-btn" onclick="generateVariation()" id="variationBtn" disabled>
-                        🔄 Generate Variation
-                    </button>
-                    <button class="action-btn" onclick="generateSequence()" id="sequenceBtn" disabled>
-                        📧 Full Sequence (3 emails)
-                    </button>
-                </div>
-                <div id="sequenceOutput" class="sequence-output"></div>
-            </div>
-        </div>
+        </main>
     </div>
 
     <script>
@@ -451,6 +838,13 @@
         let currentTone = 'conversational';
         let lastGeneratedEmail = '';
         let lastProspectData = null;
+
+        const emailTypeConfig = {
+            cold: { title: 'Cold Outreach', desc: 'Reach out to new prospects with a personalized first touch' },
+            followup: { title: 'Follow-Up', desc: 'Continue the conversation after a meeting or previous email' },
+            reengage: { title: 'Re-engagement', desc: 'Revive a cold lead or dormant conversation' },
+            meeting: { title: 'Meeting Request', desc: 'Request a specific meeting or call' }
+        };
 
         // Load saved API key
         document.addEventListener('DOMContentLoaded', () => {
@@ -461,6 +855,7 @@
             } else {
                 updateKeyStatus(false);
             }
+            updateStrength();
         });
 
         function saveApiKey(key) {
@@ -473,12 +868,14 @@
             }
         }
 
-        function updateKeyStatus(hasSavedKey) {
+        function updateKeyStatus(connected) {
             const status = document.getElementById('keyStatus');
-            if (hasSavedKey) {
-                status.innerHTML = '<span style="color: #4ade80;">✓ Key saved</span>';
+            if (connected) {
+                status.textContent = 'Connected';
+                status.classList.add('connected');
             } else {
-                status.innerHTML = '<span style="color: #ffc107;">⚠ Enter your API key above</span>';
+                status.textContent = 'Not connected';
+                status.classList.remove('connected');
             }
         }
 
@@ -496,16 +893,68 @@
 
         function setEmailType(type) {
             currentEmailType = type;
-            document.querySelectorAll('.email-type-btn').forEach(btn => {
+            document.querySelectorAll('.nav-item').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.type === type);
             });
+            document.getElementById('headerTitle').textContent = emailTypeConfig[type].title;
+            document.getElementById('headerDesc').textContent = emailTypeConfig[type].desc;
         }
 
         function setTone(tone) {
             currentTone = tone;
-            document.querySelectorAll('.tone-chip').forEach(chip => {
-                chip.classList.toggle('active', chip.dataset.tone === tone);
+            document.querySelectorAll('.tone-pill').forEach(pill => {
+                pill.classList.toggle('active', pill.dataset.tone === tone);
             });
+        }
+
+        function updateStrength() {
+            const fields = {
+                name: document.getElementById('prospectName').value.trim(),
+                company: document.getElementById('companyName').value.trim(),
+                title: document.getElementById('prospectTitle').value.trim(),
+                industry: document.getElementById('industry').value.trim(),
+                painPoint: document.getElementById('painPoint').value.trim(),
+                offering: document.getElementById('yourOffering').value.trim(),
+                hook: document.getElementById('hook').value.trim(),
+                cta: document.getElementById('cta').value
+            };
+
+            let score = 0;
+            const weights = {
+                name: 10,
+                company: 10,
+                title: 10,
+                industry: 10,
+                painPoint: 20,
+                offering: 20,
+                hook: 10,
+                cta: 10
+            };
+
+            Object.keys(fields).forEach(key => {
+                const item = document.querySelector(`.strength-item[data-field="${key}"]`);
+                if (fields[key]) {
+                    score += weights[key];
+                    item?.classList.add('complete');
+                } else {
+                    item?.classList.remove('complete');
+                }
+            });
+
+            const scoreEl = document.getElementById('strengthScore');
+            const fillEl = document.getElementById('strengthFill');
+
+            scoreEl.textContent = score + '%';
+            fillEl.style.width = score + '%';
+
+            // Update colors based on score
+            let level = 'weak';
+            if (score >= 80) level = 'strong';
+            else if (score >= 60) level = 'good';
+            else if (score >= 40) level = 'fair';
+
+            scoreEl.className = 'strength-score ' + level;
+            fillEl.className = 'strength-fill ' + level;
         }
 
         function getProspectData() {
@@ -514,8 +963,13 @@
                 title: document.getElementById('prospectTitle').value,
                 company: document.getElementById('companyName').value,
                 industry: document.getElementById('industry').value,
-                context: document.getElementById('context').value,
+                companySize: document.getElementById('companySize').value,
+                painPoint: document.getElementById('painPoint').value,
+                hook: document.getElementById('hook').value,
                 offering: document.getElementById('yourOffering').value,
+                differentiator: document.getElementById('differentiator').value,
+                socialProof: document.getElementById('socialProof').value,
+                cta: document.getElementById('cta').value,
                 emailType: currentEmailType,
                 tone: currentTone
             };
@@ -525,47 +979,70 @@
             const emailTypeDescriptions = {
                 cold: "a cold outreach email to someone you've never contacted before",
                 followup: "a follow-up email after a previous interaction (meeting, demo, call, or email)",
-                reengage: "a re-engagement email to revive a cold or dormant lead"
+                reengage: "a re-engagement email to revive a cold or dormant lead",
+                meeting: "a direct meeting request email"
             };
 
             const toneDescriptions = {
-                professional: "professional and formal, suitable for conservative industries",
-                conversational: "warm and conversational, like talking to a colleague",
-                bold: "confident and bold, with a strong hook and value proposition",
-                executive: "concise and executive-level, respecting their time, getting straight to the point"
+                professional: "professional and polished, suitable for traditional industries",
+                conversational: "warm and natural, like a helpful colleague",
+                bold: "confident with a strong hook, slightly provocative",
+                executive: "ultra-concise, respecting their time, straight to the point",
+                friendly: "warm and personable, building rapport first"
             };
 
-            let prompt = `You are an expert B2B sales copywriter specializing in enterprise sales. Write ${emailTypeDescriptions[data.emailType]}.
+            const ctaDescriptions = {
+                call: "asking for a 15-minute call",
+                demo: "offering a quick demo",
+                reply: "asking them to reply with their thoughts",
+                resource: "sharing a valuable resource",
+                intro: "asking for an introduction"
+            };
 
-PROSPECT INFORMATION:
+            let prompt = `You are an expert B2B sales copywriter who writes like a thoughtful human, not a marketer. Write ${emailTypeDescriptions[data.emailType]}.
+
+PROSPECT PROFILE:
 - Name: ${data.name || 'Unknown'}
 - Title: ${data.title || 'Unknown'}
 - Company: ${data.company || 'Unknown'}
 - Industry: ${data.industry || 'Unknown'}
-${data.context ? `- Additional Context: ${data.context}` : ''}
+${data.companySize ? `- Company Size: ${data.companySize}` : ''}
 
-WHAT I'M OFFERING:
+PERSONALIZATION CONTEXT:
+${data.painPoint ? `- Their likely pain point: ${data.painPoint}` : '- No specific pain point provided'}
+${data.hook ? `- Personal hook/trigger: ${data.hook}` : ''}
+
+MY OFFERING:
 ${data.offering || 'Not specified'}
+${data.differentiator ? `- Key differentiator: ${data.differentiator}` : ''}
+${data.socialProof ? `- Social proof: ${data.socialProof}` : ''}
+
+CALL-TO-ACTION: ${data.cta ? ctaDescriptions[data.cta] : 'a simple, low-friction next step'}
 
 TONE: ${toneDescriptions[data.tone]}
 
 REQUIREMENTS:
-1. Keep it concise - no more than 150 words for the body
-2. Start with a personalized hook based on the prospect's context
-3. Focus on value and outcomes, not features
-4. Include a clear, low-friction call-to-action
-5. Sound human, not salesy or templated
-6. If context is limited, focus on industry-relevant challenges
+1. Subject line: Intriguing but not clickbait. Under 50 characters ideally.
+2. Opening: ${data.hook ? 'Lead with the personal hook provided' : 'Start with something relevant to them, not about you'}
+3. Body: Focus on their problem and the outcome you provide. Max 100 words.
+4. NO buzzwords, NO "hope this email finds you well", NO "I'd love to"
+5. Sound like a real person wrote this, not a template
+6. End with a clear, specific CTA that's easy to say yes to
+${data.painPoint ? '7. Connect their pain point to your solution naturally' : ''}
 
-${isVariation ? 'Create a different angle/approach from a typical email of this type.' : ''}
-${sequencePosition ? `This is email #${sequencePosition} in a 3-email sequence. ${sequencePosition === 1 ? 'This is the initial outreach.' : sequencePosition === 2 ? 'Reference that you reached out before, add new value.' : 'Final touch - create urgency or offer a different angle.'}` : ''}
+${isVariation ? 'Take a completely different angle than a typical sales email. Be creative.' : ''}
+${sequencePosition ? `This is email #${sequencePosition} in a 3-email sequence. ${
+    sequencePosition === 1 ? 'This is the initial outreach.' :
+    sequencePosition === 2 ? 'Reference reaching out before. Add new value or angle.' :
+    'Final touch - try a different approach, add urgency, or be more direct.'}` : ''}
 
-Format the email with:
+Format exactly as:
 Subject: [subject line]
 
-[email body]
+[email body - no greeting line like "Hi Name," just start the email naturally]
 
-[signature placeholder: Best, [Your Name]]`;
+Best,
+[Your Name]`;
 
             return prompt;
         }
@@ -573,7 +1050,7 @@ Subject: [subject line]
         async function callClaude(prompt) {
             const apiKey = document.getElementById('apiKey').value;
             if (!apiKey) {
-                throw new Error('Please enter your Anthropic API key');
+                throw new Error('Please enter your API key in the sidebar');
             }
 
             const response = await fetch('https://api.anthropic.com/v1/messages', {
@@ -587,10 +1064,7 @@ Subject: [subject line]
                 body: JSON.stringify({
                     model: 'claude-sonnet-4-20250514',
                     max_tokens: 1024,
-                    messages: [{
-                        role: 'user',
-                        content: prompt
-                    }]
+                    messages: [{ role: 'user', content: prompt }]
                 })
             });
 
@@ -603,16 +1077,24 @@ Subject: [subject line]
             return result.content[0].text;
         }
 
+        function parseEmail(text) {
+            const subjectMatch = text.match(/Subject:\s*(.+)/i);
+            const subject = subjectMatch ? subjectMatch[1].trim() : 'No subject';
+            const body = text.replace(/Subject:\s*.+\n?/i, '').trim();
+            return { subject, body };
+        }
+
         async function generateEmail() {
-            const btn = document.querySelector('.generate-btn');
+            const btn = document.getElementById('generateBtn');
             const output = document.getElementById('emailOutput');
+            const header = document.getElementById('emailHeader');
 
             btn.disabled = true;
-            btn.innerHTML = '<span class="loading"></span>Generating...';
+            btn.innerHTML = '<span class="spinner"></span> Generating...';
             output.classList.remove('placeholder');
-            output.textContent = 'Generating your personalized email...';
+            output.textContent = 'Crafting your email...';
+            header.style.display = 'none';
 
-            // Clear sequence output
             document.getElementById('sequenceOutput').innerHTML = '';
 
             try {
@@ -622,14 +1104,18 @@ Subject: [subject line]
                 const email = await callClaude(prompt);
 
                 lastGeneratedEmail = email;
-                output.textContent = email;
+                const parsed = parseEmail(email);
 
-                // Enable action buttons
+                document.getElementById('emailSubject').textContent = parsed.subject;
+                document.getElementById('emailTo').textContent = data.name || 'Prospect';
+                header.style.display = 'block';
+                output.textContent = parsed.body;
+
                 document.getElementById('copyBtn').disabled = false;
                 document.getElementById('variationBtn').disabled = false;
                 document.getElementById('sequenceBtn').disabled = false;
             } catch (error) {
-                output.textContent = `Error: ${error.message}`;
+                output.textContent = 'Error: ' + error.message;
             } finally {
                 btn.disabled = false;
                 btn.innerHTML = 'Generate Email';
@@ -641,21 +1127,26 @@ Subject: [subject line]
 
             const btn = document.getElementById('variationBtn');
             const output = document.getElementById('emailOutput');
+            const header = document.getElementById('emailHeader');
 
             btn.disabled = true;
-            btn.textContent = '🔄 Generating...';
+            btn.textContent = 'Working...';
 
             try {
                 const prompt = buildPrompt(lastProspectData, true);
                 const email = await callClaude(prompt);
 
                 lastGeneratedEmail = email;
-                output.textContent = email;
+                const parsed = parseEmail(email);
+
+                document.getElementById('emailSubject').textContent = parsed.subject;
+                header.style.display = 'block';
+                output.textContent = parsed.body;
             } catch (error) {
-                output.textContent = `Error: ${error.message}`;
+                output.textContent = 'Error: ' + error.message;
             } finally {
                 btn.disabled = false;
-                btn.textContent = '🔄 Generate Variation';
+                btn.textContent = 'Variation';
             }
         }
 
@@ -666,38 +1157,44 @@ Subject: [subject line]
             const sequenceOutput = document.getElementById('sequenceOutput');
 
             btn.disabled = true;
-            btn.textContent = '📧 Generating...';
-            sequenceOutput.innerHTML = '<p style="color: #888;">Generating 3-email sequence...</p>';
+            btn.textContent = 'Generating...';
+            sequenceOutput.innerHTML = '<p style="color: #9ca3af; padding: 20px;">Creating your 3-email sequence...</p>';
 
             try {
                 const emails = [];
+                const labels = ['Initial Outreach', 'Follow-Up', 'Final Touch'];
+
                 for (let i = 1; i <= 3; i++) {
                     const prompt = buildPrompt(lastProspectData, false, i);
                     const email = await callClaude(prompt);
                     emails.push(email);
                 }
 
-                sequenceOutput.innerHTML = emails.map((email, index) => `
-                    <div class="email-card">
-                        <h4>Email ${index + 1}${index === 0 ? ' - Initial Outreach' : index === 1 ? ' - Follow-Up' : ' - Final Touch'}</h4>
-                        <pre>${email}</pre>
-                    </div>
-                `).join('');
+                sequenceOutput.innerHTML = emails.map((email, index) => {
+                    const parsed = parseEmail(email);
+                    return `
+                        <div class="sequence-card">
+                            <div class="sequence-card-header">
+                                <span class="sequence-badge">${index + 1}</span>
+                                ${labels[index]}
+                            </div>
+                            <div class="sequence-card-body"><strong>Subject:</strong> ${parsed.subject}\n\n${parsed.body}</div>
+                        </div>
+                    `;
+                }).join('');
             } catch (error) {
-                sequenceOutput.innerHTML = `<p style="color: #ff6b6b;">Error: ${error.message}</p>`;
+                sequenceOutput.innerHTML = `<p style="color: #ef4444; padding: 20px;">Error: ${error.message}</p>`;
             } finally {
                 btn.disabled = false;
-                btn.textContent = '📧 Full Sequence (3 emails)';
+                btn.textContent = '3-Email Sequence';
             }
         }
 
         function copyToClipboard() {
             navigator.clipboard.writeText(lastGeneratedEmail).then(() => {
                 const btn = document.getElementById('copyBtn');
-                btn.textContent = '✓ Copied!';
-                setTimeout(() => {
-                    btn.textContent = '📋 Copy to Clipboard';
-                }, 2000);
+                btn.textContent = 'Copied!';
+                setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
             });
         }
     </script>
