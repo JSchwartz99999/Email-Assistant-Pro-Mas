@@ -34,13 +34,14 @@
             padding: 24px;
             display: flex;
             flex-direction: column;
+            overflow-y: auto;
         }
 
         .logo {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 32px;
+            margin-bottom: 28px;
         }
 
         .logo-icon {
@@ -63,7 +64,7 @@
         }
 
         .nav-section {
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .nav-label {
@@ -72,20 +73,20 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: #9ca3af;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .email-type-nav {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 3px;
         }
 
         .nav-item {
-            padding: 10px 12px;
+            padding: 9px 12px;
             border-radius: 6px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
             color: #4b5563;
             transition: all 0.15s ease;
@@ -105,10 +106,87 @@
             color: #2563eb;
         }
 
-        .api-section {
-            margin-top: auto;
-            padding-top: 24px;
+        /* History Section */
+        .history-section {
+            flex: 1;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
             border-top: 1px solid #e5e7eb;
+            padding-top: 16px;
+            margin-top: 8px;
+        }
+
+        .history-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .history-list {
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .history-item {
+            padding: 10px 12px;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .history-item:hover {
+            border-color: #2563eb;
+            background: #eff6ff;
+        }
+
+        .history-item-name {
+            font-size: 13px;
+            font-weight: 500;
+            color: #1a1a2e;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .history-item-meta {
+            font-size: 11px;
+            color: #9ca3af;
+            margin-top: 2px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .history-empty {
+            font-size: 12px;
+            color: #9ca3af;
+            text-align: center;
+            padding: 20px 10px;
+        }
+
+        .clear-history-btn {
+            font-size: 11px;
+            color: #9ca3af;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 2px 6px;
+        }
+
+        .clear-history-btn:hover {
+            color: #ef4444;
+        }
+
+        .api-section {
+            padding-top: 16px;
+            border-top: 1px solid #e5e7eb;
+            margin-top: 12px;
         }
 
         .api-section label {
@@ -168,24 +246,50 @@
             flex: 1;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
         }
 
         .content-header {
-            padding: 20px 32px;
+            padding: 16px 28px;
             background: #fff;
             border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .content-header h1 {
-            font-size: 22px;
+        .content-header-left h1 {
+            font-size: 20px;
             font-weight: 600;
             color: #1a1a2e;
         }
 
-        .content-header p {
-            font-size: 14px;
+        .content-header-left p {
+            font-size: 13px;
             color: #6b7280;
-            margin-top: 4px;
+            margin-top: 2px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .header-btn {
+            padding: 8px 14px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            background: #fff;
+            font-size: 13px;
+            font-weight: 500;
+            color: #4b5563;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .header-btn:hover {
+            border-color: #2563eb;
+            color: #2563eb;
         }
 
         .content-body {
@@ -193,6 +297,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0;
+            overflow: hidden;
         }
 
         @media (max-width: 1100px) {
@@ -203,6 +308,7 @@
                 width: 100%;
                 border-right: none;
                 border-bottom: 1px solid #e5e7eb;
+                max-height: 300px;
             }
             .content-body {
                 grid-template-columns: 1fr;
@@ -211,7 +317,7 @@
 
         /* Input Panel */
         .input-panel {
-            padding: 28px 32px;
+            padding: 24px 28px;
             background: #fff;
             border-right: 1px solid #e5e7eb;
             overflow-y: auto;
@@ -221,26 +327,26 @@
         .strength-meter {
             background: #f9fafb;
             border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 28px;
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 24px;
         }
 
         .strength-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .strength-title {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             color: #374151;
         }
 
         .strength-score {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
         }
 
@@ -250,16 +356,16 @@
         .strength-score.strong { color: #059669; }
 
         .strength-bar {
-            height: 8px;
+            height: 6px;
             background: #e5e7eb;
-            border-radius: 4px;
+            border-radius: 3px;
             overflow: hidden;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .strength-fill {
             height: 100%;
-            border-radius: 4px;
+            border-radius: 3px;
             transition: all 0.3s ease;
         }
 
@@ -271,15 +377,16 @@
         .strength-checklist {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 6px;
+            gap: 4px;
         }
 
         .strength-item {
-            font-size: 12px;
+            font-size: 11px;
             color: #9ca3af;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
+            cursor: help;
         }
 
         .strength-item.complete {
@@ -287,14 +394,14 @@
         }
 
         .check-icon {
-            width: 14px;
-            height: 14px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             border: 1.5px solid currentColor;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 9px;
+            font-size: 8px;
         }
 
         .strength-item.complete .check-icon {
@@ -305,7 +412,14 @@
 
         /* Form Sections */
         .form-section {
-            margin-bottom: 28px;
+            margin-bottom: 22px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
         }
 
         .section-title {
@@ -314,7 +428,6 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: #9ca3af;
-            margin-bottom: 16px;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -327,23 +440,31 @@
             background: #e5e7eb;
         }
 
+        .saved-badge {
+            font-size: 10px;
+            color: #10b981;
+            background: #ecfdf5;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 16px;
+            gap: 12px;
+            margin-bottom: 12px;
         }
 
         .form-group {
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         .form-group label {
             display: block;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 500;
             color: #374151;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
         }
 
         .form-group label .optional {
@@ -355,10 +476,10 @@
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 10px 12px;
+            padding: 9px 11px;
             border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 14px;
+            border-radius: 6px;
+            font-size: 13px;
             font-family: inherit;
             transition: all 0.15s ease;
             background: #fff;
@@ -374,7 +495,7 @@
 
         .form-group textarea {
             resize: vertical;
-            min-height: 80px;
+            min-height: 70px;
         }
 
         .form-group input::placeholder,
@@ -382,27 +503,26 @@
             color: #9ca3af;
         }
 
-        .char-count {
+        .helper-text {
             font-size: 11px;
             color: #9ca3af;
-            text-align: right;
-            margin-top: 4px;
+            margin-top: 3px;
         }
 
         /* Tone Pills */
         .tone-options {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             flex-wrap: wrap;
         }
 
         .tone-pill {
-            padding: 8px 16px;
+            padding: 6px 12px;
             border: 1px solid #e5e7eb;
-            border-radius: 20px;
+            border-radius: 16px;
             background: #fff;
             cursor: pointer;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 500;
             color: #4b5563;
             transition: all 0.15s ease;
@@ -422,12 +542,12 @@
         /* Generate Button */
         .generate-btn {
             width: 100%;
-            padding: 14px 24px;
+            padding: 12px 20px;
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
             background: #2563eb;
             color: #fff;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.15s ease;
@@ -447,8 +567,8 @@
         }
 
         .generate-btn .spinner {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             border: 2px solid rgba(255,255,255,0.3);
             border-top-color: #fff;
             border-radius: 50%;
@@ -459,9 +579,24 @@
             to { transform: rotate(360deg); }
         }
 
+        .keyboard-hint {
+            text-align: center;
+            font-size: 11px;
+            color: #9ca3af;
+            margin-top: 8px;
+        }
+
+        .keyboard-hint kbd {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: inherit;
+            border: 1px solid #e5e7eb;
+        }
+
         /* Output Panel */
         .output-panel {
-            padding: 28px 32px;
+            padding: 24px 28px;
             background: #f9fafb;
             overflow-y: auto;
             display: flex;
@@ -472,33 +607,30 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .output-title {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             color: #374151;
         }
 
         .output-actions {
             display: flex;
-            gap: 8px;
+            gap: 6px;
         }
 
         .action-btn {
-            padding: 8px 14px;
+            padding: 6px 12px;
             border: 1px solid #e5e7eb;
-            border-radius: 6px;
+            border-radius: 5px;
             background: #fff;
             cursor: pointer;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 500;
             color: #4b5563;
             transition: all 0.15s ease;
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
 
         .action-btn:hover:not(:disabled) {
@@ -521,39 +653,104 @@
             background: #1d4ed8;
         }
 
+        .action-btn.save {
+            background: #10b981;
+            border-color: #10b981;
+            color: #fff;
+        }
+
+        .action-btn.save:hover:not(:disabled) {
+            background: #059669;
+        }
+
         .email-preview {
             flex: 1;
             background: #fff;
             border: 1px solid #e5e7eb;
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         .email-preview-header {
-            padding: 16px 20px;
+            padding: 14px 18px;
             border-bottom: 1px solid #e5e7eb;
             background: #fafafa;
         }
 
+        .email-subject-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
         .email-subject {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             color: #1a1a2e;
+            flex: 1;
+        }
+
+        .email-subject-input {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a2e;
+            flex: 1;
+            border: 1px solid transparent;
+            background: transparent;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin: -4px -8px;
+        }
+
+        .email-subject-input:hover {
+            background: #f3f4f6;
+        }
+
+        .email-subject-input:focus {
+            outline: none;
+            border-color: #2563eb;
+            background: #fff;
         }
 
         .email-meta {
-            font-size: 12px;
+            font-size: 11px;
             color: #9ca3af;
             margin-top: 4px;
         }
 
+        .email-body-wrap {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
         .email-body {
-            padding: 20px;
-            font-size: 14px;
+            flex: 1;
+            padding: 16px 18px;
+            font-size: 13px;
+            line-height: 1.7;
+            color: #374151;
+            min-height: 250px;
+            resize: none;
+            border: none;
+            font-family: inherit;
+            background: transparent;
+        }
+
+        .email-body:focus {
+            outline: none;
+            background: #fefefe;
+        }
+
+        .email-body-static {
+            padding: 16px 18px;
+            font-size: 13px;
             line-height: 1.7;
             color: #374151;
             white-space: pre-wrap;
-            min-height: 300px;
+            min-height: 250px;
         }
 
         .email-body.placeholder {
@@ -566,24 +763,30 @@
 
         /* Sequence Cards */
         .sequence-container {
-            margin-top: 24px;
+            margin-top: 20px;
         }
 
         .sequence-card {
             background: #fff;
             border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            margin-bottom: 16px;
+            border-radius: 10px;
+            margin-bottom: 12px;
             overflow: hidden;
         }
 
         .sequence-card-header {
-            padding: 12px 16px;
+            padding: 10px 14px;
             background: #fafafa;
             border-bottom: 1px solid #e5e7eb;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             color: #374151;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .sequence-card-header-left {
             display: flex;
             align-items: center;
             gap: 8px;
@@ -592,24 +795,143 @@
         .sequence-badge {
             background: #2563eb;
             color: #fff;
+            font-size: 10px;
+            padding: 2px 7px;
+            border-radius: 8px;
+        }
+
+        .sequence-copy-btn {
             font-size: 11px;
-            padding: 2px 8px;
-            border-radius: 10px;
+            color: #6b7280;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .sequence-copy-btn:hover {
+            border-color: #2563eb;
+            color: #2563eb;
         }
 
         .sequence-card-body {
-            padding: 16px;
-            font-size: 13px;
+            padding: 14px;
+            font-size: 12px;
             line-height: 1.6;
             color: #4b5563;
             white-space: pre-wrap;
         }
 
-        /* Helper text */
-        .helper-text {
-            font-size: 12px;
-            color: #9ca3af;
-            margin-top: 4px;
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            width: 90%;
+            max-width: 400px;
+            transform: scale(0.95);
+            transition: transform 0.2s ease;
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1);
+        }
+
+        .modal h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .modal-input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .modal-input:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .modal-btn {
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .modal-btn-secondary {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            color: #4b5563;
+        }
+
+        .modal-btn-primary {
+            background: #2563eb;
+            border: 1px solid #2563eb;
+            color: #fff;
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+        }
+
+        .tooltip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a1a2e;
+            color: #fff;
+            font-size: 11px;
+            padding: 6px 10px;
+            border-radius: 6px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.15s ease;
+            margin-bottom: 6px;
+            z-index: 100;
+        }
+
+        .tooltip:hover::after {
+            opacity: 1;
+            visibility: visible;
         }
     </style>
 </head>
@@ -625,18 +947,20 @@
             <div class="nav-section">
                 <div class="nav-label">Email Type</div>
                 <div class="email-type-nav">
-                    <button class="nav-item active" data-type="cold" onclick="setEmailType('cold')">
-                        Cold Outreach
-                    </button>
-                    <button class="nav-item" data-type="followup" onclick="setEmailType('followup')">
-                        Follow-Up
-                    </button>
-                    <button class="nav-item" data-type="reengage" onclick="setEmailType('reengage')">
-                        Re-engagement
-                    </button>
-                    <button class="nav-item" data-type="meeting" onclick="setEmailType('meeting')">
-                        Meeting Request
-                    </button>
+                    <button class="nav-item active" data-type="cold" onclick="setEmailType('cold')">Cold Outreach</button>
+                    <button class="nav-item" data-type="followup" onclick="setEmailType('followup')">Follow-Up</button>
+                    <button class="nav-item" data-type="reengage" onclick="setEmailType('reengage')">Re-engagement</button>
+                    <button class="nav-item" data-type="meeting" onclick="setEmailType('meeting')">Meeting Request</button>
+                </div>
+            </div>
+
+            <div class="history-section">
+                <div class="history-header">
+                    <div class="nav-label">Recent Emails</div>
+                    <button class="clear-history-btn" onclick="clearHistory()">Clear</button>
+                </div>
+                <div class="history-list" id="historyList">
+                    <div class="history-empty">No saved emails yet</div>
                 </div>
             </div>
 
@@ -653,8 +977,14 @@
         <!-- Main Content -->
         <main class="main-content">
             <header class="content-header">
-                <h1 id="headerTitle">Cold Outreach</h1>
-                <p id="headerDesc">Reach out to new prospects with a personalized first touch</p>
+                <div class="content-header-left">
+                    <h1 id="headerTitle">Cold Outreach</h1>
+                    <p id="headerDesc">Reach out to new prospects with a personalized first touch</p>
+                </div>
+                <div class="header-actions">
+                    <button class="header-btn" onclick="clearForm()">Clear Form</button>
+                    <button class="header-btn" onclick="showPitchSettings()">My Pitch Settings</button>
+                </div>
             </header>
 
             <div class="content-body">
@@ -670,37 +1000,29 @@
                             <div class="strength-fill weak" id="strengthFill" style="width: 0%"></div>
                         </div>
                         <div class="strength-checklist" id="strengthChecklist">
-                            <div class="strength-item" data-field="name">
-                                <span class="check-icon">✓</span>
-                                Contact name
+                            <div class="strength-item tooltip" data-field="name" data-tooltip="Personalization starts with their name">
+                                <span class="check-icon">✓</span>Contact name
                             </div>
-                            <div class="strength-item" data-field="company">
-                                <span class="check-icon">✓</span>
-                                Company
+                            <div class="strength-item tooltip" data-field="company" data-tooltip="Shows you did your research">
+                                <span class="check-icon">✓</span>Company
                             </div>
-                            <div class="strength-item" data-field="title">
-                                <span class="check-icon">✓</span>
-                                Title/Role
+                            <div class="strength-item tooltip" data-field="title" data-tooltip="Helps tailor the message">
+                                <span class="check-icon">✓</span>Title/Role
                             </div>
-                            <div class="strength-item" data-field="industry">
-                                <span class="check-icon">✓</span>
-                                Industry
+                            <div class="strength-item tooltip" data-field="industry" data-tooltip="For industry-specific language">
+                                <span class="check-icon">✓</span>Industry
                             </div>
-                            <div class="strength-item" data-field="painPoint">
-                                <span class="check-icon">✓</span>
-                                Pain point
+                            <div class="strength-item tooltip" data-field="painPoint" data-tooltip="3x higher response rates">
+                                <span class="check-icon">✓</span>Pain point
                             </div>
-                            <div class="strength-item" data-field="offering">
-                                <span class="check-icon">✓</span>
-                                Your offering
+                            <div class="strength-item tooltip" data-field="offering" data-tooltip="What value you provide">
+                                <span class="check-icon">✓</span>Your offering
                             </div>
-                            <div class="strength-item" data-field="hook">
-                                <span class="check-icon">✓</span>
-                                Personal hook
+                            <div class="strength-item tooltip" data-field="hook" data-tooltip="2x higher open rates">
+                                <span class="check-icon">✓</span>Personal hook
                             </div>
-                            <div class="strength-item" data-field="cta">
-                                <span class="check-icon">✓</span>
-                                Clear CTA
+                            <div class="strength-item tooltip" data-field="cta" data-tooltip="Clear next step">
+                                <span class="check-icon">✓</span>Clear CTA
                             </div>
                         </div>
                     </div>
@@ -745,30 +1067,31 @@
                         <div class="section-title">Personalization</div>
                         <div class="form-group">
                             <label>Pain Point / Challenge</label>
-                            <textarea id="painPoint" placeholder="What problem are they likely facing? e.g., 'Struggling to scale outbound sales without adding headcount'" oninput="updateStrength()"></textarea>
-                            <div class="helper-text">Specific pain points lead to 3x higher response rates</div>
+                            <textarea id="painPoint" placeholder="What problem are they likely facing?" oninput="updateStrength()"></textarea>
                         </div>
                         <div class="form-group">
                             <label>Personal Hook <span class="optional">(optional but powerful)</span></label>
-                            <textarea id="hook" placeholder="Recent trigger: funding round, job change, company news, LinkedIn post, mutual connection, conference..." oninput="updateStrength()"></textarea>
-                            <div class="helper-text">A relevant hook can double your open rates</div>
+                            <textarea id="hook" placeholder="Recent trigger: funding, job change, company news, LinkedIn post..." oninput="updateStrength()"></textarea>
                         </div>
                     </div>
 
                     <!-- Your Offering -->
                     <div class="form-section">
-                        <div class="section-title">Your Pitch</div>
+                        <div class="section-header">
+                            <div class="section-title">Your Pitch</div>
+                            <span class="saved-badge" id="pitchSavedBadge" style="display: none;">Saved</span>
+                        </div>
                         <div class="form-group">
                             <label>What You're Offering</label>
-                            <textarea id="yourOffering" placeholder="Describe your product/service and its key value. Focus on outcomes, not features." oninput="updateStrength()"></textarea>
+                            <textarea id="yourOffering" placeholder="Describe your product/service and its key value" oninput="updateStrength(); savePitch()"></textarea>
                         </div>
                         <div class="form-group">
                             <label>Key Differentiator <span class="optional">(optional)</span></label>
-                            <input type="text" id="differentiator" placeholder="What makes you different? e.g., '50% faster implementation than competitors'">
+                            <input type="text" id="differentiator" placeholder="What makes you different?" oninput="savePitch()">
                         </div>
                         <div class="form-group">
                             <label>Social Proof <span class="optional">(optional)</span></label>
-                            <input type="text" id="socialProof" placeholder="e.g., 'Used by 500+ companies including Stripe and Notion'">
+                            <input type="text" id="socialProof" placeholder="e.g., 'Used by 500+ companies'" oninput="savePitch()">
                         </div>
                         <div class="form-group">
                             <label>Desired Call-to-Action</label>
@@ -798,6 +1121,7 @@
                     <button class="generate-btn" onclick="generateEmail()" id="generateBtn">
                         Generate Email
                     </button>
+                    <div class="keyboard-hint"><kbd>Ctrl</kbd> + <kbd>Enter</kbd> to generate</div>
                 </div>
 
                 <!-- Output Panel -->
@@ -805,25 +1129,22 @@
                     <div class="output-header">
                         <span class="output-title">Preview</span>
                         <div class="output-actions">
-                            <button class="action-btn" onclick="copyToClipboard()" id="copyBtn" disabled>
-                                Copy
-                            </button>
-                            <button class="action-btn" onclick="generateVariation()" id="variationBtn" disabled>
-                                Variation
-                            </button>
-                            <button class="action-btn primary" onclick="generateSequence()" id="sequenceBtn" disabled>
-                                3-Email Sequence
-                            </button>
+                            <button class="action-btn save" onclick="saveEmail()" id="saveBtn" disabled>Save</button>
+                            <button class="action-btn" onclick="copyToClipboard()" id="copyBtn" disabled>Copy</button>
+                            <button class="action-btn" onclick="generateVariation()" id="variationBtn" disabled>Variation</button>
+                            <button class="action-btn primary" onclick="generateSequence()" id="sequenceBtn" disabled>Sequence</button>
                         </div>
                     </div>
 
-                    <div class="email-preview">
+                    <div class="email-preview" id="emailPreview">
                         <div class="email-preview-header" id="emailHeader" style="display: none;">
-                            <div class="email-subject" id="emailSubject"></div>
+                            <div class="email-subject-wrap">
+                                <input type="text" class="email-subject-input" id="emailSubject" placeholder="Subject line...">
+                            </div>
                             <div class="email-meta">To: <span id="emailTo"></span></div>
                         </div>
-                        <div class="email-body placeholder" id="emailOutput">
-                            Fill in the prospect details and click Generate to create your personalized email
+                        <div class="email-body-wrap">
+                            <textarea class="email-body placeholder" id="emailOutput" placeholder="Fill in the prospect details and click Generate to create your personalized email"></textarea>
                         </div>
                     </div>
 
@@ -833,11 +1154,24 @@
         </main>
     </div>
 
+    <!-- Save Modal -->
+    <div class="modal-overlay" id="saveModal">
+        <div class="modal">
+            <h3>Save Email</h3>
+            <input type="text" class="modal-input" id="saveEmailName" placeholder="Name this email (e.g., 'Sarah - Acme Corp')">
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-secondary" onclick="closeSaveModal()">Cancel</button>
+                <button class="modal-btn modal-btn-primary" onclick="confirmSaveEmail()">Save</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         let currentEmailType = 'cold';
         let currentTone = 'conversational';
         let lastGeneratedEmail = '';
         let lastProspectData = null;
+        let emailHistory = [];
 
         const emailTypeConfig = {
             cold: { title: 'Cold Outreach', desc: 'Reach out to new prospects with a personalized first touch' },
@@ -846,17 +1180,29 @@
             meeting: { title: 'Meeting Request', desc: 'Request a specific meeting or call' }
         };
 
-        // Load saved API key
+        // Initialize
         document.addEventListener('DOMContentLoaded', () => {
+            loadApiKey();
+            loadPitch();
+            loadHistory();
+            updateStrength();
+
+            // Keyboard shortcut
+            document.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                    e.preventDefault();
+                    generateEmail();
+                }
+            });
+        });
+
+        function loadApiKey() {
             const savedKey = localStorage.getItem('anthropic_api_key');
             if (savedKey) {
                 document.getElementById('apiKey').value = savedKey;
                 updateKeyStatus(true);
-            } else {
-                updateKeyStatus(false);
             }
-            updateStrength();
-        });
+        }
 
         function saveApiKey(key) {
             if (key && key.trim()) {
@@ -891,6 +1237,154 @@
             }
         }
 
+        // Pitch persistence
+        function loadPitch() {
+            const saved = localStorage.getItem('outreach_pitch');
+            if (saved) {
+                const pitch = JSON.parse(saved);
+                document.getElementById('yourOffering').value = pitch.offering || '';
+                document.getElementById('differentiator').value = pitch.differentiator || '';
+                document.getElementById('socialProof').value = pitch.socialProof || '';
+                document.getElementById('pitchSavedBadge').style.display = 'inline';
+            }
+        }
+
+        let pitchSaveTimeout;
+        function savePitch() {
+            clearTimeout(pitchSaveTimeout);
+            pitchSaveTimeout = setTimeout(() => {
+                const pitch = {
+                    offering: document.getElementById('yourOffering').value,
+                    differentiator: document.getElementById('differentiator').value,
+                    socialProof: document.getElementById('socialProof').value
+                };
+                localStorage.setItem('outreach_pitch', JSON.stringify(pitch));
+                document.getElementById('pitchSavedBadge').style.display = 'inline';
+            }, 500);
+        }
+
+        function showPitchSettings() {
+            alert('Your pitch settings are automatically saved as you type. They persist across sessions.\n\nTo clear them, empty the fields in the "Your Pitch" section.');
+        }
+
+        // History
+        function loadHistory() {
+            const saved = localStorage.getItem('outreach_history');
+            if (saved) {
+                emailHistory = JSON.parse(saved);
+            }
+            renderHistory();
+        }
+
+        function renderHistory() {
+            const list = document.getElementById('historyList');
+            if (emailHistory.length === 0) {
+                list.innerHTML = '<div class="history-empty">No saved emails yet</div>';
+                return;
+            }
+
+            list.innerHTML = emailHistory.slice(0, 10).map((item, index) => `
+                <div class="history-item" onclick="loadFromHistory(${index})">
+                    <div class="history-item-name">${item.name}</div>
+                    <div class="history-item-meta">
+                        <span>${item.company || 'No company'}</span>
+                        <span>${formatDate(item.timestamp)}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function formatDate(timestamp) {
+            const date = new Date(timestamp);
+            const now = new Date();
+            const diff = now - date;
+
+            if (diff < 60000) return 'Just now';
+            if (diff < 3600000) return Math.floor(diff / 60000) + 'm ago';
+            if (diff < 86400000) return Math.floor(diff / 3600000) + 'h ago';
+            return date.toLocaleDateString();
+        }
+
+        function loadFromHistory(index) {
+            const item = emailHistory[index];
+
+            // Load prospect data
+            document.getElementById('prospectName').value = item.prospectName || '';
+            document.getElementById('prospectTitle').value = item.prospectTitle || '';
+            document.getElementById('companyName').value = item.company || '';
+            document.getElementById('industry').value = item.industry || '';
+            document.getElementById('companySize').value = item.companySize || '';
+            document.getElementById('painPoint').value = item.painPoint || '';
+            document.getElementById('hook').value = item.hook || '';
+            document.getElementById('cta').value = item.cta || '';
+
+            // Load email
+            document.getElementById('emailSubject').value = item.subject || '';
+            document.getElementById('emailOutput').value = item.body || '';
+            document.getElementById('emailTo').textContent = item.prospectName || 'Prospect';
+            document.getElementById('emailHeader').style.display = 'block';
+            document.getElementById('emailOutput').classList.remove('placeholder');
+
+            lastGeneratedEmail = `Subject: ${item.subject}\n\n${item.body}`;
+
+            // Enable buttons
+            document.getElementById('saveBtn').disabled = false;
+            document.getElementById('copyBtn').disabled = false;
+            document.getElementById('variationBtn').disabled = false;
+            document.getElementById('sequenceBtn').disabled = false;
+
+            updateStrength();
+            setEmailType(item.emailType || 'cold');
+            setTone(item.tone || 'conversational');
+        }
+
+        function saveEmail() {
+            document.getElementById('saveEmailName').value =
+                document.getElementById('prospectName').value + ' - ' +
+                document.getElementById('companyName').value;
+            document.getElementById('saveModal').classList.add('active');
+        }
+
+        function closeSaveModal() {
+            document.getElementById('saveModal').classList.remove('active');
+        }
+
+        function confirmSaveEmail() {
+            const name = document.getElementById('saveEmailName').value.trim() || 'Untitled';
+
+            const item = {
+                name: name,
+                prospectName: document.getElementById('prospectName').value,
+                prospectTitle: document.getElementById('prospectTitle').value,
+                company: document.getElementById('companyName').value,
+                industry: document.getElementById('industry').value,
+                companySize: document.getElementById('companySize').value,
+                painPoint: document.getElementById('painPoint').value,
+                hook: document.getElementById('hook').value,
+                cta: document.getElementById('cta').value,
+                subject: document.getElementById('emailSubject').value,
+                body: document.getElementById('emailOutput').value,
+                emailType: currentEmailType,
+                tone: currentTone,
+                timestamp: Date.now()
+            };
+
+            emailHistory.unshift(item);
+            if (emailHistory.length > 50) emailHistory.pop();
+
+            localStorage.setItem('outreach_history', JSON.stringify(emailHistory));
+            renderHistory();
+            closeSaveModal();
+        }
+
+        function clearHistory() {
+            if (confirm('Clear all saved emails?')) {
+                emailHistory = [];
+                localStorage.removeItem('outreach_history');
+                renderHistory();
+            }
+        }
+
         function setEmailType(type) {
             currentEmailType = type;
             document.querySelectorAll('.nav-item').forEach(btn => {
@@ -920,16 +1414,7 @@
             };
 
             let score = 0;
-            const weights = {
-                name: 10,
-                company: 10,
-                title: 10,
-                industry: 10,
-                painPoint: 20,
-                offering: 20,
-                hook: 10,
-                cta: 10
-            };
+            const weights = { name: 10, company: 10, title: 10, industry: 10, painPoint: 20, offering: 20, hook: 10, cta: 10 };
 
             Object.keys(fields).forEach(key => {
                 const item = document.querySelector(`.strength-item[data-field="${key}"]`);
@@ -947,7 +1432,6 @@
             scoreEl.textContent = score + '%';
             fillEl.style.width = score + '%';
 
-            // Update colors based on score
             let level = 'weak';
             if (score >= 80) level = 'strong';
             else if (score >= 60) level = 'good';
@@ -955,6 +1439,24 @@
 
             scoreEl.className = 'strength-score ' + level;
             fillEl.className = 'strength-fill ' + level;
+        }
+
+        function clearForm() {
+            ['prospectName', 'prospectTitle', 'companyName', 'industry', 'painPoint', 'hook'].forEach(id => {
+                document.getElementById(id).value = '';
+            });
+            document.getElementById('companySize').value = '';
+            document.getElementById('cta').value = '';
+            document.getElementById('emailSubject').value = '';
+            document.getElementById('emailOutput').value = '';
+            document.getElementById('emailOutput').classList.add('placeholder');
+            document.getElementById('emailHeader').style.display = 'none';
+            document.getElementById('sequenceOutput').innerHTML = '';
+            document.getElementById('saveBtn').disabled = true;
+            document.getElementById('copyBtn').disabled = true;
+            document.getElementById('variationBtn').disabled = true;
+            document.getElementById('sequenceBtn').disabled = true;
+            updateStrength();
         }
 
         function getProspectData() {
@@ -999,7 +1501,7 @@
                 intro: "asking for an introduction"
             };
 
-            let prompt = `You are an expert B2B sales copywriter who writes like a thoughtful human, not a marketer. Write ${emailTypeDescriptions[data.emailType]}.
+            return `You are an expert B2B sales copywriter who writes like a thoughtful human, not a marketer. Write ${emailTypeDescriptions[data.emailType]}.
 
 PROSPECT PROFILE:
 - Name: ${data.name || 'Unknown'}
@@ -1043,15 +1545,11 @@ Subject: [subject line]
 
 Best,
 [Your Name]`;
-
-            return prompt;
         }
 
         async function callClaude(prompt) {
             const apiKey = document.getElementById('apiKey').value;
-            if (!apiKey) {
-                throw new Error('Please enter your API key in the sidebar');
-            }
+            if (!apiKey) throw new Error('Please enter your API key in the sidebar');
 
             const response = await fetch('https://api.anthropic.com/v1/messages', {
                 method: 'POST',
@@ -1092,7 +1590,7 @@ Best,
             btn.disabled = true;
             btn.innerHTML = '<span class="spinner"></span> Generating...';
             output.classList.remove('placeholder');
-            output.textContent = 'Crafting your email...';
+            output.value = 'Crafting your email...';
             header.style.display = 'none';
 
             document.getElementById('sequenceOutput').innerHTML = '';
@@ -1106,16 +1604,17 @@ Best,
                 lastGeneratedEmail = email;
                 const parsed = parseEmail(email);
 
-                document.getElementById('emailSubject').textContent = parsed.subject;
+                document.getElementById('emailSubject').value = parsed.subject;
                 document.getElementById('emailTo').textContent = data.name || 'Prospect';
                 header.style.display = 'block';
-                output.textContent = parsed.body;
+                output.value = parsed.body;
 
+                document.getElementById('saveBtn').disabled = false;
                 document.getElementById('copyBtn').disabled = false;
                 document.getElementById('variationBtn').disabled = false;
                 document.getElementById('sequenceBtn').disabled = false;
             } catch (error) {
-                output.textContent = 'Error: ' + error.message;
+                output.value = 'Error: ' + error.message;
             } finally {
                 btn.disabled = false;
                 btn.innerHTML = 'Generate Email';
@@ -1127,7 +1626,6 @@ Best,
 
             const btn = document.getElementById('variationBtn');
             const output = document.getElementById('emailOutput');
-            const header = document.getElementById('emailHeader');
 
             btn.disabled = true;
             btn.textContent = 'Working...';
@@ -1139,11 +1637,10 @@ Best,
                 lastGeneratedEmail = email;
                 const parsed = parseEmail(email);
 
-                document.getElementById('emailSubject').textContent = parsed.subject;
-                header.style.display = 'block';
-                output.textContent = parsed.body;
+                document.getElementById('emailSubject').value = parsed.subject;
+                output.value = parsed.body;
             } catch (error) {
-                output.textContent = 'Error: ' + error.message;
+                output.value = 'Error: ' + error.message;
             } finally {
                 btn.disabled = false;
                 btn.textContent = 'Variation';
@@ -1157,8 +1654,8 @@ Best,
             const sequenceOutput = document.getElementById('sequenceOutput');
 
             btn.disabled = true;
-            btn.textContent = 'Generating...';
-            sequenceOutput.innerHTML = '<p style="color: #9ca3af; padding: 20px;">Creating your 3-email sequence...</p>';
+            btn.textContent = 'Working...';
+            sequenceOutput.innerHTML = '<p style="color: #9ca3af; padding: 16px; text-align: center;">Creating your 3-email sequence...</p>';
 
             try {
                 const emails = [];
@@ -1175,23 +1672,35 @@ Best,
                     return `
                         <div class="sequence-card">
                             <div class="sequence-card-header">
-                                <span class="sequence-badge">${index + 1}</span>
-                                ${labels[index]}
+                                <div class="sequence-card-header-left">
+                                    <span class="sequence-badge">${index + 1}</span>
+                                    ${labels[index]}
+                                </div>
+                                <button class="sequence-copy-btn" onclick="copySequenceEmail(${index})">Copy</button>
                             </div>
-                            <div class="sequence-card-body"><strong>Subject:</strong> ${parsed.subject}\n\n${parsed.body}</div>
+                            <div class="sequence-card-body" id="sequence-${index}"><strong>Subject:</strong> ${parsed.subject}\n\n${parsed.body}</div>
                         </div>
                     `;
                 }).join('');
             } catch (error) {
-                sequenceOutput.innerHTML = `<p style="color: #ef4444; padding: 20px;">Error: ${error.message}</p>`;
+                sequenceOutput.innerHTML = `<p style="color: #ef4444; padding: 16px;">Error: ${error.message}</p>`;
             } finally {
                 btn.disabled = false;
-                btn.textContent = '3-Email Sequence';
+                btn.textContent = 'Sequence';
             }
         }
 
+        function copySequenceEmail(index) {
+            const content = document.getElementById(`sequence-${index}`).textContent;
+            navigator.clipboard.writeText(content);
+        }
+
         function copyToClipboard() {
-            navigator.clipboard.writeText(lastGeneratedEmail).then(() => {
+            const subject = document.getElementById('emailSubject').value;
+            const body = document.getElementById('emailOutput').value;
+            const text = `Subject: ${subject}\n\n${body}`;
+
+            navigator.clipboard.writeText(text).then(() => {
                 const btn = document.getElementById('copyBtn');
                 btn.textContent = 'Copied!';
                 setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
